@@ -95,6 +95,7 @@ img {
 }
 
 .header-item {
+  position: relative;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -103,6 +104,26 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+}
+
+.header-item.link .current {
+  color: var(--accent-color);
+}
+
+.header-nav.link .current {
+  color: var(--accent-color);
+}
+
+.current::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+
+  position: absolute;
+  display: block;
+  background-color: #2196f3;
+  border-radius: 2px;
+  bottom: -1px;
 }
 
 .header-link:nth-child(-n + 2) {
@@ -152,6 +173,7 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
   fill: var(--text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-item:hover,
@@ -269,16 +291,38 @@ img {
   color: var(--main-color);
   margin-bottom: 50px;
   text-align: center;
-  /* outline: 2px solid #f44336; */
 }
 
 .opportunity-list {
   display: flex;
-  /* padding-bottom: 81px; */
 }
 
 .about-item + .about-item {
   margin-left: 30px;
+}
+
+.about-item {
+  position: relative;
+}
+
+.about-text {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  right: 0;
+  background: rgba(47, 48, 58, 0.8);
+  color: #ffffff;
+  padding: 27px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 /* Команда */
@@ -354,6 +398,8 @@ img {
   border-radius: 50%;
   background-color: transparent;
   fill: #afb1b8;
+  transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-icon {
@@ -403,6 +449,7 @@ img {
   box-sizing: border-box;
   border-radius: 4px;
   object-fit: contain;
+  transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-client {
@@ -445,6 +492,8 @@ img {
   border-radius: 4px;
   border: 0 solid transparent;
   padding: 6px 22px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-filter:hover,
@@ -473,6 +522,37 @@ img {
 
 .examples-shadow {
   display: block;
+}
+
+.examples-shadow:hover .top-text {
+  transform: translateY(0);
+}
+
+.top-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.top-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--web-color);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  padding: 63px 24px 63px 24px;
+
+  letter-spacing: 0.03em;
+
+  color: #ffffff;
+  transform: translateY(100%);
+  overflow: auto;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .examples-shadow:hover,
@@ -508,6 +588,7 @@ img {
   background: var(--web-color);
   cursor: pointer;
   border-radius: 4px;
+  border: none;
 
   font-family: inherit;
   font-weight: 700;
@@ -523,8 +604,8 @@ img {
 
 .hero-btn:hover,
 .hero-btn:focus {
-  color: var(--secondary-color);
-  background-color: var(--btn-color);
+  color: var(--web-color);
+  background-color: var(--filter-color);
 }
 
 /* Футер */
@@ -578,6 +659,7 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-list-mail:hover,
@@ -625,6 +707,8 @@ img {
   fill: #ffffff;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+  transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .join-icon {
@@ -637,4 +721,55 @@ img {
 .join-link:hover,
 .join-link:focus {
   background: var(--web-color);
+}
+
+/* Модалка */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(0);
+  width: 528px;
+  height: 581px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-svg {
 }
