@@ -104,6 +104,7 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-item.link .current {
@@ -173,7 +174,8 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
   fill: var(--text-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-item:hover,
@@ -313,14 +315,15 @@ img {
   right: 0;
   background: rgba(47, 48, 58, 0.8);
   color: var(--secondary-color);
-  padding: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
-  text-align: center;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -399,7 +402,8 @@ img {
   background-color: transparent;
   fill: #afb1b8;
   transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-icon {
@@ -449,7 +453,8 @@ img {
   box-sizing: border-box;
   border-radius: 4px;
   object-fit: contain;
-  transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-client {
@@ -493,7 +498,8 @@ img {
   border: 0 solid transparent;
   padding: 6px 22px;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-filter:hover,
@@ -524,7 +530,8 @@ img {
   display: block;
 }
 
-.examples-shadow:hover .top-text {
+.examples-shadow:hover .top-text,
+.examples-shadow:focus .top-text {
   transform: translateY(0);
 }
 
@@ -552,7 +559,8 @@ img {
   color: var(--secondary-color);
   transform: translateY(100%);
   overflow: auto;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .examples-shadow:hover,
